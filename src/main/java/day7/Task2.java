@@ -17,6 +17,8 @@ public class Task2 {
         }
         System.out.println(player1.getStamina());
         Player.info();
+        player1.run();
+        Player.info();
 
     }
 }

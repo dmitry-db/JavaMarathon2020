@@ -2,6 +2,7 @@ package day7;
 
 public class Player {
     private int stamina;
+    private int st = 0;
     public static final int MAX_STAMINA = 100;
     public static final int MIN_STAMINA = 0;
     public static int countPlayers = 0;
@@ -21,8 +22,9 @@ public class Player {
         if (stamina > 0) {
             stamina--;
         }
-        if (stamina == 0){
+        if (stamina == 0 && st == 0){
             countPlayers--;
+            st++;
         }
     }
 

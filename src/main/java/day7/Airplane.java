@@ -11,8 +11,11 @@ public class Airplane {
         if (ar1.length > ar2.length){
             System.out.println(ar1.producer + " длиннее");
         }
-        else {
+        if (ar1.length < ar2.length) {
             System.out.println(ar2.producer + " длиннее");
+        }
+        else {
+            System.out.println("Длины разные");
         }
 
     }
