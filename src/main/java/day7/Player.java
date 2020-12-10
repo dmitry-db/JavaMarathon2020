@@ -17,7 +17,7 @@ public class Player {
     public int getStamina() {
         return stamina;
     }
-
+    
     public void run(){
         if (stamina > 0) {
             stamina--;

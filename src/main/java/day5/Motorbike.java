@@ -20,6 +20,4 @@ public class Motorbike {
     public String getModel() {
         return model;
     }
-
-
 }
