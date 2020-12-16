@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Task2 {
-    public static void main(String[] args) throws NullPointerException {
+    public static void main(String[] args) {
         File file = new File("people");
 
         try {
