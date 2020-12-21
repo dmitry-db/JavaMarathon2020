@@ -40,13 +40,6 @@ public class fight {
         player2.att(5,7);
         player2.att(6,7);
 
-
-
-
-
-
-
-
         field1.Printmas();
 
     }

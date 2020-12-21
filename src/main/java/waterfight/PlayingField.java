@@ -21,36 +21,12 @@ public class PlayingField {
 
     public void addOneShip(int x,int y) {
         int p = 0;
-        if (mas[x][y] == "\uD83D\uDFE6") {      //Проверка на ореол
+        if (provOreol(x, y)) {      //Проверка на ореол
             p = 1;
         }
 
         if (p == 0 && kolOne < 4) {
-            if (x - 1 >= 0) {
-                mas[x - 1][y] = "\uD83D\uDFE6";
-            }
-            if (x + 1 <= 9) {
-                mas[x + 1][y] = "\uD83D\uDFE6";
-            }
-            if (y - 1 >= 0) {
-                mas[x][y - 1] = "\uD83D\uDFE6";
-            }
-            if (y + 1 <= 9) {
-                mas[x][y + 1] = "\uD83D\uDFE6";
-            }
-            if (x + 1 <= 9 && y + 1 <= 9) {
-                mas[x + 1][y + 1] = "\uD83D\uDFE6";
-            }
-            if (x + 1 <= 9 && y - 1 >= 0) {
-                mas[x + 1][y - 1] = "\uD83D\uDFE6";
-            }
-            if (x - 1 >= 0 && y + 1 <= 9) {
-                mas[x - 1][y + 1] = "\uD83D\uDFE6";
-            }
-            if (x - 1 >= 0 && y - 1 >= 0) {
-                mas[x - 1][y - 1] = "\uD83D\uDFE6";
-            }
-
+            oreol(x,y);
             mas[x][y] = "\uD83D\uDEE5";
                 kolOne++;
             }
@@ -84,7 +60,7 @@ public class PlayingField {
             int p = 0;
             int valid;
             try {
-                if (mas[x1][y1] == "\uD83D\uDFE6" || mas[x2][y2] == "\uD83D\uDFE6") {      //Проверка на ореол
+                if (provOreol(x1, y1) || provOreol(x2, y2)) {      //Проверка на ореол
                     p = 1;
                 }
 
@@ -97,57 +73,8 @@ public class PlayingField {
 
 
                 if (p == 0 && kolDb < 3 && valid == 0) {
-                    if (x1 - 1 >= 0) {
-                        mas[x1 - 1][y1] = "\uD83D\uDFE6";
-                    }
-                    if (x1 + 1 <= 9) {
-                        mas[x1 + 1][y1] = "\uD83D\uDFE6";
-                    }
-                    if (y1 - 1 >= 0) {
-                        mas[x1][y1 - 1] = "\uD83D\uDFE6";
-                    }
-                    if (y1 + 1 <= 9) {
-                        mas[x1][y1 + 1] = "\uD83D\uDFE6";
-                    }
-                    if (x1 + 1 <= 9 && y1 + 1 <= 9) {
-                        mas[x1 + 1][y1 + 1] = "\uD83D\uDFE6";
-                    }
-                    if (x1 + 1 <= 9 && y1 - 1 >= 0) {
-                        mas[x1 + 1][y1 - 1] = "\uD83D\uDFE6";
-                    }
-                    if (x1 - 1 >= 0 && y1 + 1 <= 9) {
-                        mas[x1 - 1][y1 + 1] = "\uD83D\uDFE6";
-                    }
-                    if (x1 - 1 >= 0 && y1 - 1 >= 0) {
-                        mas[x1 - 1][y1 - 1] = "\uD83D\uDFE6";
-                    }
-
-
-                    if (x2 - 1 >= 0) {
-                        mas[x2 - 1][y2] = "\uD83D\uDFE6";
-                    }
-                    if (x2 + 1 <= 9) {
-                        mas[x2 + 1][y2] = "\uD83D\uDFE6";
-                    }
-                    if (y2 - 1 >= 0) {
-                        mas[x2][y2 - 1] = "\uD83D\uDFE6";
-                    }
-                    if (y2 + 1 <= 9) {
-                        mas[x2][y2 + 1] = "\uD83D\uDFE6";
-                    }
-                    if (x2 + 1 <= 9 && y2 + 1 <= 9) {
-                        mas[x2 + 1][y2 + 1] = "\uD83D\uDFE6";
-                    }
-                    if (x2 + 1 <= 9 && y2 - 1 >= 0) {
-                        mas[x2 + 1][y2 - 1] = "\uD83D\uDFE6";
-                    }
-                    if (x2 - 1 >= 0 && y2 + 1 <= 9) {
-                        mas[x2 - 1][y2 + 1] = "\uD83D\uDFE6";
-                    }
-                    if (x2 - 1 >= 0 && y2 - 1 >= 0) {
-                        mas[x2 - 1][y2 - 1] = "\uD83D\uDFE6";
-                    }
-
+                    oreol(x1, y1);
+                    oreol(x2, y2);
                     mas[x1][y1] = "\uD83D\uDEE5";
                     mas[x2][y2] = "\uD83D\uDEE5";
                     kolDb++;
@@ -227,7 +154,7 @@ public class PlayingField {
         int p = 0;
         int valid;
         try {
-            if (mas[x1][y1] == "\uD83D\uDFE6" || mas[x2][y2] == "\uD83D\uDFE6" || mas[x3][y3] == "\uD83D\uDFE6") {      //Проверка на ореол
+            if (provOreol(x1, y1) || provOreol(x2, y2) || provOreol(x3, y3)) {      //Проверка на ореол
                 p = 1;
             }
 
@@ -241,83 +168,9 @@ public class PlayingField {
 
 
             if (p == 0 && kolThr < 2 && valid == 0) {
-                if (x1 - 1 >= 0) {
-                    mas[x1 - 1][y1] = "\uD83D\uDFE6";
-                }
-                if (x1 + 1 <= 9) {
-                    mas[x1 + 1][y1] = "\uD83D\uDFE6";
-                }
-                if (y1 - 1 >= 0) {
-                    mas[x1][y1 - 1] = "\uD83D\uDFE6";
-                }
-                if (y1 + 1 <= 9) {
-                    mas[x1][y1 + 1] = "\uD83D\uDFE6";
-                }
-                if (x1 + 1 <= 9 && y1 + 1 <= 9) {
-                    mas[x1 + 1][y1 + 1] = "\uD83D\uDFE6";
-                }
-                if (x1 + 1 <= 9 && y1 - 1 >= 0) {
-                    mas[x1 + 1][y1 - 1] = "\uD83D\uDFE6";
-                }
-                if (x1 - 1 >= 0 && y1 + 1 <= 9) {
-                    mas[x1 - 1][y1 + 1] = "\uD83D\uDFE6";
-                }
-                if (x1 - 1 >= 0 && y1 - 1 >= 0) {
-                    mas[x1 - 1][y1 - 1] = "\uD83D\uDFE6";
-                }
-
-
-                if (x2 - 1 >= 0) {
-                    mas[x2 - 1][y2] = "\uD83D\uDFE6";
-                }
-                if (x2 + 1 <= 9) {
-                    mas[x2 + 1][y2] = "\uD83D\uDFE6";
-                }
-                if (y2 - 1 >= 0) {
-                    mas[x2][y2 - 1] = "\uD83D\uDFE6";
-                }
-                if (y2 + 1 <= 9) {
-                    mas[x2][y2 + 1] = "\uD83D\uDFE6";
-                }
-                if (x2 + 1 <= 9 && y2 + 1 <= 9) {
-                    mas[x2 + 1][y2 + 1] = "\uD83D\uDFE6";
-                }
-                if (x2 + 1 <= 9 && y2 - 1 >= 0) {
-                    mas[x2 + 1][y2 - 1] = "\uD83D\uDFE6";
-                }
-                if (x2 - 1 >= 0 && y2 + 1 <= 9) {
-                    mas[x2 - 1][y2 + 1] = "\uD83D\uDFE6";
-                }
-                if (x2 - 1 >= 0 && y2 - 1 >= 0) {
-                    mas[x2 - 1][y2 - 1] = "\uD83D\uDFE6";
-                }
-
-
-                if (x3 - 1 >= 0) {
-                    mas[x3 - 1][y3] = "\uD83D\uDFE6";
-                }
-                if (x3 + 1 <= 9) {
-                    mas[x3 + 1][y3] = "\uD83D\uDFE6";
-                }
-                if (y3 - 1 >= 0) {
-                    mas[x3][y3 - 1] = "\uD83D\uDFE6";
-                }
-                if (y3 + 1 <= 9) {
-                    mas[x3][y3 + 1] = "\uD83D\uDFE6";
-                }
-                if (x3 + 1 <= 9 && y3 + 1 <= 9) {
-                    mas[x3 + 1][y3 + 1] = "\uD83D\uDFE6";
-                }
-                if (x3 + 1 <= 9 && y3 - 1 >= 0) {
-                    mas[x3 + 1][y3 - 1] = "\uD83D\uDFE6";
-                }
-                if (x3 - 1 >= 0 && y3 + 1 <= 9) {
-                    mas[x3 - 1][y3 + 1] = "\uD83D\uDFE6";
-                }
-                if (x3 - 1 >= 0 && y3 - 1 >= 0) {
-                    mas[x3 - 1][y3 - 1] = "\uD83D\uDFE6";
-                }
-
+                oreol(x1, y1);
+                oreol(x2, y2);
+                oreol(x3, y3);
                 mas[x1][y1] = "\uD83D\uDEE5";
                 mas[x2][y2] = "\uD83D\uDEE5";
                 mas[x3][y3] = "\uD83D\uDEE5";
@@ -360,7 +213,7 @@ public class PlayingField {
                             String[] s = w.split(";");
                             String[] s1 = s[0].split(",");
                             String[] s2 = s[1].split(",");
-                            String[] s3 = s[1].split(",");
+                            String[] s3 = s[2].split(",");
                             int a = Integer.parseInt(s1[0]);
                             int b = Integer.parseInt(s1[1]);
                             int c = Integer.parseInt(s2[0]);
@@ -387,7 +240,7 @@ public class PlayingField {
                         String[] s = w.split(";");
                         String[] s1 = s[0].split(",");
                         String[] s2 = s[1].split(",");
-                        String[] s3 = s[1].split(",");
+                        String[] s3 = s[2].split(",");
                         int a = Integer.parseInt(s1[0]);
                         int b = Integer.parseInt(s1[1]);
                         int c = Integer.parseInt(s2[0]);
@@ -408,7 +261,7 @@ public class PlayingField {
         int p = 0;
         int valid;
         try {
-            if (mas[x1][y1] == "\uD83D\uDFE6" || mas[x2][y2] == "\uD83D\uDFE6" || mas[x3][y3] == "\uD83D\uDFE6" || mas[x4][y4] == "\uD83D\uDFE6") {      //Проверка на ореол
+            if ((provOreol(x1, y1) || provOreol(x2, y2) || provOreol(x3, y3)) || provOreol(x4, y4)) {      //Проверка на ореол
                 p = 1;
             }
 
@@ -422,109 +275,10 @@ public class PlayingField {
 
 
             if (p == 0 && kolFr < 1 && valid == 0) {
-                if (x1 - 1 >= 0) {
-                    mas[x1 - 1][y1] = "\uD83D\uDFE6";
-                }
-                if (x1 + 1 <= 9) {
-                    mas[x1 + 1][y1] = "\uD83D\uDFE6";
-                }
-                if (y1 - 1 >= 0) {
-                    mas[x1][y1 - 1] = "\uD83D\uDFE6";
-                }
-                if (y1 + 1 <= 9) {
-                    mas[x1][y1 + 1] = "\uD83D\uDFE6";
-                }
-                if (x1 + 1 <= 9 && y1 + 1 <= 9) {
-                    mas[x1 + 1][y1 + 1] = "\uD83D\uDFE6";
-                }
-                if (x1 + 1 <= 9 && y1 - 1 >= 0) {
-                    mas[x1 + 1][y1 - 1] = "\uD83D\uDFE6";
-                }
-                if (x1 - 1 >= 0 && y1 + 1 <= 9) {
-                    mas[x1 - 1][y1 + 1] = "\uD83D\uDFE6";
-                }
-                if (x1 - 1 >= 0 && y1 - 1 >= 0) {
-                    mas[x1 - 1][y1 - 1] = "\uD83D\uDFE6";
-                }
-
-
-                if (x2 - 1 >= 0) {
-                    mas[x2 - 1][y2] = "\uD83D\uDFE6";
-                }
-                if (x2 + 1 <= 9) {
-                    mas[x2 + 1][y2] = "\uD83D\uDFE6";
-                }
-                if (y2 - 1 >= 0) {
-                    mas[x2][y2 - 1] = "\uD83D\uDFE6";
-                }
-                if (y2 + 1 <= 9) {
-                    mas[x2][y2 + 1] = "\uD83D\uDFE6";
-                }
-                if (x2 + 1 <= 9 && y2 + 1 <= 9) {
-                    mas[x2 + 1][y2 + 1] = "\uD83D\uDFE6";
-                }
-                if (x2 + 1 <= 9 && y2 - 1 >= 0) {
-                    mas[x2 + 1][y2 - 1] = "\uD83D\uDFE6";
-                }
-                if (x2 - 1 >= 0 && y2 + 1 <= 9) {
-                    mas[x2 - 1][y2 + 1] = "\uD83D\uDFE6";
-                }
-                if (x2 - 1 >= 0 && y2 - 1 >= 0) {
-                    mas[x2 - 1][y2 - 1] = "\uD83D\uDFE6";
-                }
-
-
-                if (x3 - 1 >= 0) {
-                    mas[x3 - 1][y3] = "\uD83D\uDFE6";
-                }
-                if (x3 + 1 <= 9) {
-                    mas[x3 + 1][y3] = "\uD83D\uDFE6";
-                }
-                if (y3 - 1 >= 0) {
-                    mas[x3][y3 - 1] = "\uD83D\uDFE6";
-                }
-                if (y3 + 1 <= 9) {
-                    mas[x3][y3 + 1] = "\uD83D\uDFE6";
-                }
-                if (x3 + 1 <= 9 && y3 + 1 <= 9) {
-                    mas[x3 + 1][y3 + 1] = "\uD83D\uDFE6";
-                }
-                if (x3 + 1 <= 9 && y3 - 1 >= 0) {
-                    mas[x3 + 1][y3 - 1] = "\uD83D\uDFE6";
-                }
-                if (x3 - 1 >= 0 && y3 + 1 <= 9) {
-                    mas[x3 - 1][y3 + 1] = "\uD83D\uDFE6";
-                }
-                if (x3 - 1 >= 0 && y3 - 1 >= 0) {
-                    mas[x3 - 1][y3 - 1] = "\uD83D\uDFE6";
-                }
-
-
-                if (x4 - 1 >= 0) {
-                    mas[x4 - 1][y4] = "\uD83D\uDFE6";
-                }
-                if (x4 + 1 <= 9) {
-                    mas[x4 + 1][y4] = "\uD83D\uDFE6";
-                }
-                if (y4 - 1 >= 0) {
-                    mas[x4][y4 - 1] = "\uD83D\uDFE6";
-                }
-                if (y4 + 1 <= 9) {
-                    mas[x4][y4 + 1] = "\uD83D\uDFE6";
-                }
-                if (x4 + 1 <= 9 && y4 + 1 <= 9) {
-                    mas[x4 + 1][y4 + 1] = "\uD83D\uDFE6";
-                }
-                if (x4 + 1 <= 9 && y4 - 1 >= 0) {
-                    mas[x4 + 1][y4 - 1] = "\uD83D\uDFE6";
-                }
-                if (x4 - 1 >= 0 && y4 + 1 <= 9) {
-                    mas[x4 - 1][y4 + 1] = "\uD83D\uDFE6";
-                }
-                if (x4 - 1 >= 0 && y4 - 1 >= 0) {
-                    mas[x4 - 1][y4 - 1] = "\uD83D\uDFE6";
-                }
-
+                oreol(x1, y1);
+                oreol(x2, y2);
+                oreol(x3, y3);
+                oreol(x4, y4);
                 mas[x1][y1] = "\uD83D\uDEE5";
                 mas[x2][y2] = "\uD83D\uDEE5";
                 mas[x3][y3] = "\uD83D\uDEE5";
@@ -621,9 +375,6 @@ public class PlayingField {
     }
 
 
-
-
-
     public void setMas(String[][] mas) {
         this.mas = mas;
     }
@@ -640,4 +391,41 @@ public class PlayingField {
             System.out.println();
         }
     }
+
+    public void oreol(int x, int y){
+        if (x - 1 >= 0) {
+            mas[x - 1][y] = "\uD83D\uDFE6";
+        }
+        if (x + 1 <= 9) {
+            mas[x + 1][y] = "\uD83D\uDFE6";
+        }
+        if (y - 1 >= 0) {
+            mas[x][y - 1] = "\uD83D\uDFE6";
+        }
+        if (y + 1 <= 9) {
+            mas[x][y + 1] = "\uD83D\uDFE6";
+        }
+        if (x + 1 <= 9 && y + 1 <= 9) {
+            mas[x + 1][y + 1] = "\uD83D\uDFE6";
+        }
+        if (x + 1 <= 9 && y - 1 >= 0) {
+            mas[x + 1][y - 1] = "\uD83D\uDFE6";
+        }
+        if (x - 1 >= 0 && y + 1 <= 9) {
+            mas[x - 1][y + 1] = "\uD83D\uDFE6";
+        }
+        if (x - 1 >= 0 && y - 1 >= 0) {
+            mas[x - 1][y - 1] = "\uD83D\uDFE6";
+        }
+    }
+
+
+        public boolean provOreol(int x, int y){
+        if (mas[x][y] == "\uD83D\uDFE6" || mas[x][y] == "\uD83D\uDEE5"){
+            return true;
+        }
+        else {
+            return false;
+        }
+        }
 }

@@ -14,12 +14,7 @@ public class Attack {
     public void att(int x, int y){
         if (arr[x][y] == "\uD83D\uDEE5"){
             arr[x][y] = "\uD83D\uDFE5";
-            if ((x + 1 <= 9 && arr[x + 1][y] == "\uD83D\uDEE5") || (x - 1 >= 0 &&arr[x - 1][y] == "\uD83D\uDEE5") ||
-                    (y + 1 <= 9 && arr[x][y + 1] == "\uD83D\uDEE5") || (y - 1 >= 0 ) && arr[x][y - 1] == "\uD83D\uDEE5"){
-                System.out.println("Попадание!");
-                System.out.println("Повторите ход!");
-            }
-            else { if ((x + 1 <= 9) && arr[x + 1][y] == "\uD83D\uDEE5" ||((x + 1 <= 9) &&(x + 2 <= 9)) && arr[x + 1][y] == "\uD83D\uDFE5" && arr[x+2][y] == "\uD83D\uDEE5" ||
+            { if ((x + 1 <= 9) && arr[x + 1][y] == "\uD83D\uDEE5" ||((x + 1 <= 9) &&(x + 2 <= 9)) && arr[x + 1][y] == "\uD83D\uDFE5" && arr[x+2][y] == "\uD83D\uDEE5" ||
                     ((x + 1 <= 9) &&(x + 2 <= 9) && x + 3 <= 9) && arr[x + 1][y] == "\uD83D\uDFE5" && arr[x + 2][y] == "\uD83D\uDFE5" && arr[x + 3][y] == "\uD83D\uDEE5" ||
                     (x - 1 >= 0) && arr[x - 1][y] == "\uD83D\uDEE5" || (x - 1 >= 0 && x - 2 >= 0) && arr[x - 1][y] == "\uD83D\uDFE5" && arr[x-2][y] == "\uD83D\uDEE5" ||
                     (x - 1 >= 0 && x - 2 >= 0 && x - 3 >= 0) && arr[x - 1][y] == "\uD83D\uDFE5" && arr[x - 2][y] == "\uD83D\uDFE5" && arr[x - 3][y] == "\uD83D\uDEE5" ||
@@ -55,5 +50,6 @@ public class Attack {
             System.out.println("Игра закончена - " + name + " победил");
         }
     }
+
 
 }
